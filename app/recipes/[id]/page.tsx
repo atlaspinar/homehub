@@ -1,3 +1,4 @@
+
 import RecipeDetail from './RecipeDetail';
 
 export async function generateStaticParams() {
@@ -13,7 +14,7 @@ export async function generateStaticParams() {
   ];
 }
 
-export default async function RecipePage({ params }: { params: { id: string } }) {
+export default async function RecipePage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
   return <RecipeDetail recipeId={resolvedParams.id} />;
 }
